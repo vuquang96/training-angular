@@ -11,4 +11,7 @@ export class NewDepartmentComponent{
         this.titleService.setTitle( "New Department" );
     }
    
+    create(value){
+        console.log(value);
+    }
 }
