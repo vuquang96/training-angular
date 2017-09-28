@@ -1,0 +1,72 @@
+<sidebar></sidebar>
+
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3">
+            <form enctype="multipart/form-data">
+                
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="photo">Photo</label>
+                    <input type="file" name="photo">
+                </div>
+
+                <div class="form-group">
+                    <label for="job_title">Job title</label>
+                    <input type="text" name="job_title" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="cellphone">Cellphone</label>
+                    <input type="number" name="cellphone" class="form-control" >
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" class="form-control" >
+                </div>
+
+                <div class="form-group">
+                    <label for="birthday">Birthday</label>
+                    <input type="date" name="birthday" class="form-control">
+                </div>
+
+                <label class="radio-inline">
+                      <input type="radio" name="sex" id="inlineRadio1" value="0" checked> Male
+                    </label>
+                <label class="radio-inline">
+                      <input type="radio" name="sex" id="inlineRadio2" value="1"> Female
+                    </label>
+
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea class="form-control" rows="3" name="address"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="date_start_work">Date start Work</label>
+                    <input type="date" name="date_start_work" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label>Department</label>
+                    <select class="form-control" name="department">
+                        <!-- @if(count($department) > 0)
+                          @foreach($department as $value)
+                            <option value="{{ $value['id'] }}">{{ $value['name'] }}</option>
+                          @endforeach
+                        @endif -->
+                        <<option value="1">Department</option>
+                      </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Create</button>
+                <button type="reset" class="btn btn-primary">Reset</button>
+            </form>
+        </div>
+    </div>
+</div>
