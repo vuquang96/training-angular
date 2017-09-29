@@ -1,28 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import * as $ from 'jquery';
+import { FileUploader } from 'ng2-file-upload';
+
 @Component({
     selector: "app-content",
     templateUrl: './new_employee.component.html'
 })
 
-export class NewEmployeeComponent {
+export class NewEmployeeComponent implements OnInit {
     nameFile;
+   
     constructor(private titleService: Title) {
         this.titleService.setTitle("New Employee");
     }
-    triggerPhoto(){
+    ngOnInit() {
+        //this.uploader = new FileUploader({url: `YOUR URL`});
+    }
+    triggerPhoto() {
         $("#photo").trigger("click");
     }
-    change(){
+    change() {
         this.nameFile = $("#photo").val();
         $(".photo-add").html(this.nameFile);
     }
-    DeletePhoto(){
+    DeletePhoto() {
         $("#photo").val("");
         $(".photo-add").html("Photo");
     }
-    create(value){
+    create(value) {
         console.log(value);
     }
+
 }
