@@ -9,5 +9,6 @@ import { Title } from '@angular/platform-browser';
 export class DashboardSuperComponent{
     constructor(private titleService: Title){
         this.titleService.setTitle( "Dasboard" );
+        console.log(localStorage);
     }
 }

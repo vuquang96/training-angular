@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import {Router} from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 
 @Component({
     selector: "app-content",
@@ -8,14 +8,25 @@ import {Router} from '@angular/router';
 })
 
 export class LoginComponent {
+    message = "sorry, the wrong information";
+    messageStatus = true;
     constructor(private authService: AuthService, private router: Router) {
-        if(this.authService.isLogged()){
-            this.router.navigate(["super-admin/dashboard"]);
-        }
+        console.log(localStorage);
     }
     login(value) {
-        console.log(value);
-        this.authService.setLogin(true);
-        this.router.navigate(["super-admin/dashboard"]);
+        this.authService.login(value.email, value.password).subscribe((response: any) => {
+            this.authService.getAuthUser().subscribe((response: any) => {
+                if (response) {
+                    localStorage.setItem('level', response.result.level);
+                    localStorage.setItem('id', response.result.id);
+                    this.router.navigate(["/super-admin/dashboard"]);
+                }
+            }, error => {
+                console.log(error);
+            });
+        }, error => {
+            console.log(error);
+            this.messageStatus = false;
+        });
     }
 }

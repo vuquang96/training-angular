@@ -17,12 +17,12 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
             <ul class="dropdown-menu dropdown-user">
-                <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                <li><a [routerLink]="['/super-admin/user', _id]"><i class="fa fa-user fa-fw"></i> User Profile</a>
                 </li>
                 <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                 </li>
                 <li class="divider"></li>
-                <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                <li><a href="javascript:void(0)" (click)="logout()"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                 </li>
             </ul>
             <!-- /.dropdown-user -->
@@ -48,23 +48,23 @@
                     <a routerLink="/super-admin/dashboard" routerLinkActive="active"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                 </li>
                 <li>
-                    <a routerLink="/super-admin/department/new"><i class="fa fa-table fa-fw"></i> Deparment<span class="fa arrow"></span></a>
+                    <a href="javascript:void(0)"><i class="fa fa-table fa-fw"></i> Deparment<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a routerLink="/super-admin/department/new">List</a>
+                            <a  href="javascript:void(0)">List</a>
                         </li>
                         <li>
-                            <a routerLink="/super-admin/department/new" routerLinkActive="active">New</a>
+                            <a href="javascript:void(0)" routerLink="/super-admin/department/new" routerLinkActive="active">New</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
 
                 <li>
-                    <a routerLink="/super-admin/employee/new"><i class="fa fa-bar-chart-o fa-fw"></i> Employee<span class="fa arrow"></span></a>
+                    <a href="javascript:void(0)"><i class="fa fa-bar-chart-o fa-fw"></i> Employee<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a routerLink="/super-admin/employee/new">List</a>
+                            <a  href="javascript:void(0)">List</a>
                         </li>
                         <li>
                             <a routerLink="/super-admin/employee/new" routerLinkActive="active">New</a>
@@ -75,10 +75,10 @@
 
 
                 <li>
-                    <a routerLink="/super-admin/user/new"><i class="fa fa-sitemap fa-fw"></i> User <span class="fa arrow"></span></a>
+                    <a href="javascript:void(0)"><i class="fa fa-sitemap fa-fw"></i> User <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a routerLink="/super-admin/user/new">List</a>
+                            <a routerLink="/super-admin/user/list" routerLinkActive="active">List</a>
                         </li>
                         <li>
                             <a routerLink="/super-admin/user/new" routerLinkActive="active">New</a>

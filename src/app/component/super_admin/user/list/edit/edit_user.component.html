@@ -1,0 +1,44 @@
+<sidebar></sidebar>
+
+<div id="page-wrapper" *ngIf="user">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+            <form #formEditUser="ngForm" (ngSubmit)="update(formEditUser.value)">
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <td>Name</td>
+                        <td><input type="text" name="name" [(ngModel)]="user.name" class="form-control" required /></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><input type="email" name="email" [(ngModel)]="user.email" disabled class="form-control" /></td>
+                    </tr>
+                    <tr>
+                        <td>Level</td>
+                        <td *ngIf="user.level != 0">
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="level"  value="1" [checked]="isAdmin" [(ngModel)]="user.level">
+                                  Admin
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="level"  value="2" [checked]="isMember" [(ngModel)]="user.level">
+                                  Member
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td><input type="text" name="password" class="form-control" minlength="6" ngModel/></td>
+                    </tr>
+                    <tr>
+                        <td><button type="submit" class="btn btn-primary">Save</button></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>

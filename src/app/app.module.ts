@@ -18,6 +18,7 @@ import { AuthService } from './services/auth.service';
 /* Guards */
 import { LoginGuards } from './guards/auth/login.guards';
 import { NotLoginGuards } from './guards/auth/not_login.guards';
+import { SuperAdmin } from './guards/auth/super_admin.guards';
 /* End Guards */
 
 /* Super Admin */
@@ -26,6 +27,9 @@ import { DashboardSuperComponent } from './component/super_admin/dashboard/dashb
 import { NewDepartmentComponent } from './component/super_admin/department/new/new_department.component';
 import { NewUserSuperComponent } from './component/super_admin/user/new/new_user.component';
 import { NewEmployeeComponent } from './component/super_admin/employee/new/new_employee.component';
+import { ListUserSuperComponent } from './component/super_admin/user/list/list_user.component';
+import { DetailUserComponent } from './component/super_admin/user/list/detail/detail_user.component';
+import { EditUserComponent } from './component/super_admin/user/list/edit/edit_user.component';
 /* End Admin */
 
 
@@ -40,7 +44,10 @@ import { NewEmployeeComponent } from './component/super_admin/employee/new/new_e
     NewUserSuperComponent,
     NewEmployeeComponent,
     FileDropDirective,
-    FileSelectDirective
+    FileSelectDirective,
+    ListUserSuperComponent,
+    DetailUserComponent,
+    EditUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,8 +59,9 @@ import { NewEmployeeComponent } from './component/super_admin/employee/new/new_e
   providers: [
     AuthService,
     LoginGuards,
-    NotLoginGuards
+    NotLoginGuards,
+    SuperAdmin
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
