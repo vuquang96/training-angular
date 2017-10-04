@@ -11,6 +11,9 @@ export class LoginComponent {
     message = "sorry, the wrong information";
     messageStatus = true;
     constructor(private authService: AuthService, private router: Router) {
+        if(this.authService.isLogged()){
+            this.router.navigate(["/super-admin/dashboard"]);
+        }
         console.log(localStorage);
     }
     login(value) {
@@ -19,7 +22,7 @@ export class LoginComponent {
                 if (response) {
                     localStorage.setItem('level', response.result.level);
                     localStorage.setItem('id', response.result.id);
-                    this.router.navigate(["/super-admin/dashboard"]);
+                    window.location.reload();
                 }
             }, error => {
                 console.log(error);

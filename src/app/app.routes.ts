@@ -12,6 +12,7 @@ import { ListUserSuperComponent } from './component/super_admin/user/list/list_u
 import { DetailUserComponent } from './component/super_admin/user/list/detail/detail_user.component';
 import { EditUserComponent } from './component/super_admin/user/list/edit/edit_user.component';
 //import { NotLoginGuards } from './guards/auth/not_login.guards';
+import { TextSuperComponent } from './component/super_admin/text/text.component';
 
 const routing: Routes = [
     { path: '', component: LoginComponent },
@@ -19,12 +20,14 @@ const routing: Routes = [
     // { path: 'super-admin/dashboard', component: DashboardSuperComponent, canActivate: [LoginGuards] },
     { path: 'super-admin/dashboard', component: DashboardSuperComponent, canActivate: [SuperAdmin] },
     { path: 'super-admin/user/list', component: ListUserSuperComponent, canActivate: [SuperAdmin] },
+    { path: 'super-admin/user/new', component: NewUserSuperComponent, canActivate: [SuperAdmin] },
     { path: 'super-admin/user/:id', component: DetailUserComponent, canActivate: [SuperAdmin] },
-    { path: 'super-admin/user/new', component: NewUserSuperComponent },
+    
     { path: 'super-admin/user/edit/:id', component: EditUserComponent, canActivate: [SuperAdmin] },
     { path: 'super-admin/department/new', component: NewDepartmentComponent, canActivate: [SuperAdmin] },
 
     { path: 'super-admin/employee/new', component: NewEmployeeComponent, canActivate: [SuperAdmin] },
+    { path: 'super-admin/text', component: TextSuperComponent, canActivate: [SuperAdmin] },
     { path: '**', component: NotFoundComponent }
 ];
 

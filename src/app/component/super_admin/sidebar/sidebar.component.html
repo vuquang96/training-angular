@@ -51,7 +51,7 @@
                     <a href="javascript:void(0)"><i class="fa fa-table fa-fw"></i> Deparment<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a  href="javascript:void(0)">List</a>
+                            <a href="javascript:void(0)">List</a>
                         </li>
                         <li>
                             <a href="javascript:void(0)" routerLink="/super-admin/department/new" routerLinkActive="active">New</a>
@@ -64,7 +64,7 @@
                     <a href="javascript:void(0)"><i class="fa fa-bar-chart-o fa-fw"></i> Employee<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a  href="javascript:void(0)">List</a>
+                            <a href="javascript:void(0)">List</a>
                         </li>
                         <li>
                             <a routerLink="/super-admin/employee/new" routerLinkActive="active">New</a>
@@ -81,10 +81,14 @@
                             <a routerLink="/super-admin/user/list" routerLinkActive="active">List</a>
                         </li>
                         <li>
-                            <a routerLink="/super-admin/user/new" routerLinkActive="active">New</a>
+                            <a [routerLink]="['/super-admin/user/new']" routerLinkActive="active">New</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
+                </li>
+
+                <li>
+                    <a routerLink="/super-admin/text" routerLinkActive="active"><i class="fa fa-files-o fa-fw"></i> Text</a>
                 </li>
 
             </ul>

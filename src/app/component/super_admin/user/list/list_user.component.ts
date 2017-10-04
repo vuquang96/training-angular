@@ -18,11 +18,11 @@ export class ListUserSuperComponent implements OnInit {
         console.log(value);
     }
 
-    delete(id){
+    delete(id) {
         let confirmResult = confirm("Are you sure to delete User ?");
-        if(confirmResult){
+        if (confirmResult) {
             this.authService.delete(id).subscribe(response => {
-                if(response){
+                if (response) {
                     alert("Delete success !");
                     this.loadData();
                 }

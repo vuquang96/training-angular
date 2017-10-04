@@ -1,12 +1,10 @@
-<sidebar></sidebar>
-
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-6 col-lg-offset-3">
             <form #userForm="ngForm" (ngSubmit)="create(userForm.value)">
                 <div class="form-group">
                     <label>User name</label>
-                    <input type="text" class="form-control" name="name" #name="ngModel" required ngModel> 
+                    <input type="text" class="form-control" name="name" #name="ngModel" required ngModel>
                     <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger">
                         <div [hidden]="!name.errors.required">
                             Can not empty
@@ -15,7 +13,8 @@
                 </div>
                 <div class="form-group">
                     <label>Email address</label>
-                    <input type="email" class="form-control" name="email" #email="ngModel" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required ngModel>
+                    <input type="email" class="form-control" name="email" #email="ngModel" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                        (keyup)="check(email.value)" required ngModel>
                     <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
                         <div [hidden]="!email.errors.pattern">
                             Not Email
@@ -24,6 +23,10 @@
                             Can not empty
                         </div>
                     </div>
+                    <div *ngIf="emailUnique" class="alert alert-danger">
+                        Email exists
+                    </div>
+
                 </div>
                 <div class="form-group">
                     <label>Password</label>
@@ -37,12 +40,22 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
+                <div>
                     <label>Level</label>
-                    <select class="form-control" name="level" ngModel>
-                        <option value="0">Admin</option>
-                        <option value="1">Member</option>
-                    </select>
+                    <div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="level" value="1" [checked]="true" [(ngModel)]="level">
+                                Admin
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="level" value="2" [(ngModel)]="level">
+                                Member
+                            </label>
+                        </div>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-info" [disabled]="!userForm.form.valid">Create</button>
                 <button type="reset" class="btn btn-warning">Reset</button>

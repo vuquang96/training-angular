@@ -1,8 +1,7 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
+import { RouterTestingModule } from '@angular/router/testing'
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { FileDropDirective, FileSelectDirective } from 'ng2-file-upload';
+
 
 import { AppRoute } from './app.routes';
 import { RouterModule } from '@angular/router';
@@ -32,38 +31,44 @@ import { DetailUserComponent } from './component/super_admin/user/list/detail/de
 import { EditUserComponent } from './component/super_admin/user/list/edit/edit_user.component';
 import { TextSuperComponent } from './component/super_admin/text/text.component';
 /* End Admin */
+import { APP_BASE_HREF } from '@angular/common';
+import { Title } from '@angular/platform-browser';
 
+describe('1st tests', () => {
+  it('true is true', () => expect(true).toBe(true));
+});
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    NotFoundComponent,
-    SidebarSuperComponent,
-    LoginComponent,
-    DashboardSuperComponent,
-    NewDepartmentComponent,
-    NewUserSuperComponent,
-    NewEmployeeComponent,
-    FileDropDirective,
-    FileSelectDirective,
-    ListUserSuperComponent,
-    DetailUserComponent,
-    EditUserComponent,
-    TextSuperComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoute,
-    RouterModule,
-    FormsModule,
-    HttpModule,
-  ],
-  providers: [
-    AuthService,
-    LoginGuards,
-    NotLoginGuards,
-    SuperAdmin
-  ],
-  bootstrap: [AppComponent],
-})
-export class AppModule { }
+beforeEach(() => {
+  TestBed.configureTestingModule({
+    declarations: [
+      AppComponent,
+      NotFoundComponent,
+      SidebarSuperComponent,
+      LoginComponent,
+      DashboardSuperComponent,
+      NewDepartmentComponent,
+      NewUserSuperComponent,
+      NewEmployeeComponent,
+      ListUserSuperComponent,
+      DetailUserComponent,
+      EditUserComponent,
+      TextSuperComponent,
+    ],
+    imports: [
+      AppRoute,
+      RouterModule,
+      FormsModule,
+      HttpModule,
+     
+    ],
+    providers: [
+      AuthService,
+      LoginGuards,
+      NotLoginGuards,
+      SuperAdmin,
+      { provide: APP_BASE_HREF, useValue: '/' },
+      Title,
+    ],
+  })
+});
+

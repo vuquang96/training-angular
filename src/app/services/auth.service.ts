@@ -8,7 +8,7 @@ import 'rxjs/Rx';
 export class AuthService {
     headers: Headers = new Headers;
     public _isLoggedIn: boolean;
-    public apiUrl = "http://localhost:8080/lar-angular/public/api/";
+    public apiUrl = "http://localhost/lar-angular/public/api/";
     public _token = localStorage.getItem('token');
 
     constructor(public http: Http) {
@@ -37,9 +37,8 @@ export class AuthService {
     }
 
     getAuthUser(): Observable<any[]> {
-        return this.http.get(this.apiUrl + 'administrator/user?token=' + this._token).map((response: Response) => response.json());
+        return this.http.get(this.apiUrl + 'administrator/user?token=' + localStorage.getItem('token')).map((response: Response) => response.json());
     }
-
 
     isSuperAdmin(): any {
         this.http.get(this.apiUrl + 'administrator/user?token=' + this._token).map((response: Response) => {
@@ -58,16 +57,27 @@ export class AuthService {
         return this.http.get(this.apiUrl + 'administrator/users?token=' + this._token).map((response: Response) => response.json());
     }
 
-    getDetail(id: number): Observable<any[]>{
-        return this.http.get(this.apiUrl + 'administrator/user/'+id+'?token=' + this._token).map((response: Response) => response.json());
+    getDetail(id: number): Observable<any[]> {
+        return this.http.get(this.apiUrl + 'administrator/user/' + id + '?token=' + this._token).map((response: Response) => response.json());
     }
 
-    update(id:number, data) {
-        return this.http.put(this.apiUrl + 'administrator/user/'+id+'?token=' + this._token, data).map((response: Response)  => response.json());
+    update(id: number, data) {
+        return this.http.put(this.apiUrl + 'administrator/user/' + id + '?token=' + this._token, data).map((response: Response) => response.json());
     }
 
-    delete(id:number) {
-        return this.http.delete(this.apiUrl + 'administrator/user/'+id+'?token=' + this._token).map((response: Response)  => response.json());
+    delete(id: number) {
+        return this.http.delete(this.apiUrl + 'administrator/user/' + id + '?token=' + this._token).map((response: Response) => response.json());
+    }
+
+    checkEmail(email: string) {
+        return this.http.get(this.apiUrl + 'administrator/user/check-email/' + email + '?token=' + this._token)
+            .map((response: Response) => {
+                return  response.json();
+            });
+    }
+
+    create(data) {
+        return this.http.post(this.apiUrl + 'administrator/user/create?token=' + this._token, data).map((response: Response) => response.json());
     }
 
     logout() {

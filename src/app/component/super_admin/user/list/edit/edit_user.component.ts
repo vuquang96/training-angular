@@ -28,7 +28,6 @@ export class EditUserComponent implements OnInit, OnDestroy {
         });
         this.authService.getDetail(this.id).subscribe((response: any) => {
             this.user = response.result;
-            console.log(this.user.level);
             if(this.user.level == 1){
                 this.isAdmin = true;
             }else if(this.user.level == 2){
